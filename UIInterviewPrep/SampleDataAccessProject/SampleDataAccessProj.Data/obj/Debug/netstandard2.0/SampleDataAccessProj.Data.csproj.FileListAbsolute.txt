@@ -1,9 +1,0 @@
-/home/mrmlabs/Sam_Workspace/UIInterviewPrep/SampleDataAccessProject/SampleDataAccessProj.Data/bin/Debug/netstandard2.0/SampleDataAccessProj.Data.deps.json
-/home/mrmlabs/Sam_Workspace/UIInterviewPrep/SampleDataAccessProject/SampleDataAccessProj.Data/bin/Debug/netstandard2.0/SampleDataAccessProj.Data.dll
-/home/mrmlabs/Sam_Workspace/UIInterviewPrep/SampleDataAccessProject/SampleDataAccessProj.Data/bin/Debug/netstandard2.0/SampleDataAccessProj.Data.pdb
-/home/mrmlabs/Sam_Workspace/UIInterviewPrep/SampleDataAccessProject/SampleDataAccessProj.Data/obj/Debug/netstandard2.0/SampleDataAccessProj.Data.csprojAssemblyReference.cache
-/home/mrmlabs/Sam_Workspace/UIInterviewPrep/SampleDataAccessProject/SampleDataAccessProj.Data/obj/Debug/netstandard2.0/SampleDataAccessProj.Data.csproj.CoreCompileInputs.cache
-/home/mrmlabs/Sam_Workspace/UIInterviewPrep/SampleDataAccessProject/SampleDataAccessProj.Data/obj/Debug/netstandard2.0/SampleDataAccessProj.Data.AssemblyInfoInputs.cache
-/home/mrmlabs/Sam_Workspace/UIInterviewPrep/SampleDataAccessProject/SampleDataAccessProj.Data/obj/Debug/netstandard2.0/SampleDataAccessProj.Data.AssemblyInfo.cs
-/home/mrmlabs/Sam_Workspace/UIInterviewPrep/SampleDataAccessProject/SampleDataAccessProj.Data/obj/Debug/netstandard2.0/SampleDataAccessProj.Data.dll
-/home/mrmlabs/Sam_Workspace/UIInterviewPrep/SampleDataAccessProject/SampleDataAccessProj.Data/obj/Debug/netstandard2.0/SampleDataAccessProj.Data.pdb
