@@ -1,0 +1,93 @@
+Cursor (variable to hold the data for iteration and perform action)
+perform update using cursor.This can be used if we are working with stored procedure and want to perform action on the result of executed query.
+Below cursor is holding data for product launched in the month of jan and we are reducing product price for month of jan, by iterating over data stored in cursor.
+declare @c_LaunchedDate Date;
+declare @c_Price INT;
+declare @v_productid INT;
+
+declare cursor_Jan cursor 
+for select ProductLaunched,ProductPrice,Product_id from SamProduct
+    where MONTH(ProductLaunched)=1;
+
+    open cursor_Jan;
+     
+     PRINT 'I am open';
+   
+    FETCH NEXT FROM cursor_Jan INTO 
+    @c_LaunchedDate,@c_Price,@v_productid;
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+
+    PRINT 'Inside while';
+    select concat('1stprice:',@c_Price);
+    
+    update SamProduct
+set ProductPrice=@c_Price-(@c_Price*(0.1))
+where MONTH(ProductLaunched)=1  and Product_id=@v_productid;
+
+    FETCH NEXT FROM cursor_Jan INTO 
+    @c_LaunchedDate,@c_Price,@v_productid;
+
+    END
+    PRINT 'update completed';
+    CLOSE cursor_Jan;
+    PRINT 'cursor closed';
+    DEALLOCATE cursor_Jan;
+
+Working with if else
+Make sure that your last else or if should have begin and end.
+/*Insert 1000 rows with different records*/
+alter PROCEDURE Insert1000Employees
+AS
+DECLARE @counter INT;
+SET @counter=1;
+truncate table Employees;
+WHILE @counter<=1000	
+  BEGIN  
+  IF @counter>700  
+	BEGIN
+  INSERT INTO [Employees] ([FIRST_NAME], [LAST_NAME],[EMAIL],[DEPARTMENT_ID],[BIRTH_DATE],[JOINING_DATE])
+	VALUES (CONCAT('parth',@counter),CONCAT('mahalle',@counter),concat(CONCAT('parth',@counter),'@gmail.com'),2,'1965-08-15','2006-01-03') 
+  END
+  ELSE
+  BEGIN 
+  INSERT INTO [Employees] ([FIRST_NAME], [LAST_NAME],[EMAIL],[DEPARTMENT_ID],[BIRTH_DATE],[JOINING_DATE])
+	VALUES (CONCAT('parth',@counter),CONCAT('mahalle',@counter),concat(CONCAT('parth',@counter),'@gmail.com'),2,'1987-03-01','2012-01-03') 
+  END
+ set @counter=@counter+1
+END
+GO
+
+Working with Functions
+/*calculate age, 0.25 consideration for leap year*/
+create FUNCTION getAge(@birthyear date)
+returns INT AS
+BEGIN
+return cast(DATEDIFF(DD,@birthyear,getdate())/365.25 as INT) 
+END
+
+select dbo.getAge('2013-06-04')
+
+
+/*calculate experiance in year*/
+create FUNCTION getExperiance(@joindate date)
+returns INT AS
+BEGIN
+return cast(DATEDIFF(YY,@joindate,getdate()) as INT) 
+END
+
+select dbo.getExperiance('2009-11-28')
+
+
+
+
+Complex query
+/*no employee in each dep who are older than 45 and exp greater than 10*/
+select count(e.EMPLOYEE_ID),d.DEPARTMENT_NAME from Employees as e,Departments as d
+where e.DEPARTMENT_ID=d.DEPARTMENT_ID and
+dbo.getAge(BIRTH_DATE)>45 and dbo.getExperiance(JOINING_DATE)>10
+group by d.DEPARTMENT_NAME
+
+Views
+purpose of views

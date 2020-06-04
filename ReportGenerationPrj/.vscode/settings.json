@@ -1,0 +1,24 @@
+{
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 30,
+            "database": "MoviesDB",
+            "dialect": "MSSQL",
+            "name": "Prep",
+            "password": "SAadmin123",
+            "port": 1433,
+            "server": "localhost",
+            "username": "sa"
+        },
+        {
+            "connectionTimeout": 120,
+            "database": "prod",
+            "dialect": "MSSQL",
+            "name": "proddata",
+            "password": "SAadmin123",
+            "port": 1433,
+            "server": "localhost",
+            "username": "SA"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+uid: sanvedanakale@gmail.com
+pswd: Maratha6644!t12
+
+twilio account sid:   AC221d2da9b22726fc518e34ae50b41b5f
+Auth token:      362cd71611a4148adfad53cbcfcec040
+
+number: +12182755700
+
+
+
+exception:
+code 20404
+
+"Enumeration yielded no results"
+
+"The requested resource /2010-04-01/Accounts/sanvedanakale@gmail.com/Messages.json was not found"
+
+

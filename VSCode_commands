@@ -1,0 +1,1 @@
+[mrmlabs@mrmlabs-computer GMart]$ dotnet sln GMart.sln add GMartWebApi/GMartWebApi.csprojProject `GMartWebApi/GMartWebApi.csproj` added to the solution.

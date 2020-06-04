@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "UserConsole/1.0.0": {
+        "dependencies": {
+          "HospitalServices": "1.0.0"
+        },
+        "runtime": {
+          "UserConsole.dll": {}
+        }
+      },
+      "HospitalServices/1.0.0": {
+        "runtime": {
+          "HospitalServices.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "UserConsole/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HospitalServices/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

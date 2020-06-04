@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/Scripts.js"></script>
+</head>
+
+<body ng-app="myModule">
+    {{5+5}}
+    <div ng-controller="myController">
+        {{error}}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Release Date</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movie in movies">
+                    <td>{{movie.Title}}</td>
+                    <td>{{movie.ReleaseDate}}</td>
+                    <td>{{movie.Genre}}</td>
+                    <td>{{movie.Price}}</td>
+                    <td>{{movie.Rating}}</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="movie.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="movie.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="movie.Id">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

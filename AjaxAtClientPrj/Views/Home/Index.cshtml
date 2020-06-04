@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Movie>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="content-panel">
+    <table class="table striped-table">
+        <th><tr>
+            <td>Title</td>
+            <td>Genre</td>
+            <td>Rating</td>
+            <td>Price</td>
+            <td>Launched Date</td>
+        </tr></th>
+        <tbody>
+            @foreach(var movie in Model)
+            {
+                <tr>
+                    <td>@movie.Title</td>
+                    <td>@movie.Genre</td>
+                    <td>@movie.Rating</td>
+                    <td>@movie.Price</td>
+                    <td>@movie.ReleaseDate</td>
+                </tr>
+            }
+            <tr></tr>
+        </tbody>
+    </table>
+</div>
+<!--
+<div class="form-group">
+    <input type="text" id="txtid1" class="form-control">
+</div>
+<div class="form-group">
+    <button id="btnDetails">Details</button>
+</div>
+<div id="dvDetail"></div>
+@section Scripts{
+    <script>
+$(document).ready(function () {
+    $('#btnDetails').click(function () {
+        $.ajax({
+            type: "GET",
+            url: "https://localhost:6001/Movies/"+$('#txtid1').val(),
+            //contentType: "application/json",
+            datatype: "json",
+            success:function(result){alert(result.title);Console.log(result.title);},
+    error: function (request, message, error) {
+      console.log(error.message);
+      handleException(request, message, error);}    
+  });
+    });
+ function handleException(request, message, error) {
+  var msg = "";
+  msg += "Code: " + request.status + "\n";
+  msg += "Text: " + request.statusText + "\n";
+  if (request.responseJSON != null) {
+    msg += "Message: " +
+           request.responseJSON.Message + "\n";
+  }
+  alert("error here :"+msg);
+}
+     });
+
+
+    </script>
+}-->

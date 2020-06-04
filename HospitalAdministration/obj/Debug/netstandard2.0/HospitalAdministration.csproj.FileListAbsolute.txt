@@ -1,0 +1,4 @@
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/obj/Debug/netstandard2.0/HospitalAdministration.csprojAssemblyReference.cache
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/obj/Debug/netstandard2.0/HospitalAdministration.csproj.CoreCompileInputs.cache
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/obj/Debug/netstandard2.0/HospitalAdministration.AssemblyInfoInputs.cache
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/obj/Debug/netstandard2.0/HospitalAdministration.AssemblyInfo.cs

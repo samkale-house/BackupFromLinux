@@ -1,0 +1,29 @@
+@model IEnumerable<Report>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Report File Name</th>
+                    <th>Report Length</th>
+                    <th>Student ID</th>
+                      
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var report in Model)
+                {
+                    <tr>
+                        <td>@{
+                            
+                                     <a asp-action="ShowReport" asp-controller="FileIOOperations" asp-route-id=@report.StudentId target="_blank" >@report.ReportName</a>  
+                        }
+                        </td>
+                        <td>@report.ContentLength</td>
+                        <td>@report.StudentId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+   

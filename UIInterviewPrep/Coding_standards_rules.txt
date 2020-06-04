@@ -1,0 +1,119 @@
+1.C# have its own coding standards,adding to it, many organizations may follow there own coding standards.
+https://blog.submain.com/coding-standards-c-developers-need/
+private variable: private string _firstName;
+private method: private void sayHello(){}
+public variable/class/method: public class Patient{}
+interface: interface IPerson{}
+
+
+2.VS Code Shortcuts
+ctrl+shift+I  ---> Right click and format selected
+ctrl+shift+P  ---> Command Pallet
+ctrl+/        ---> Line comment and uncomment
+ctrl+shift+A  ---> Block comment and uncomment
+ctrl+Home/End ---> Begin or End of file
+Home/End      ---> Begin/End of line
+ctrl+up/down arrow  ---> Scroll up or down
+ctrl+G        ---> Go to line number
+
+3.Steps to follow each time when asked to write any program
+  a.Confirm requirements,think about test case and note down requirement and test case as comments,later we can delete it
+  b.Write empty class and class level ///<summary> comments
+  c.Write empty methods with params and add comments over each method ///<summary> <c>parameter</c>description</summary> /// <param name="parameter1">description</param>  ///   <retrun>description</returns>
+  d.Think about reusable methods/class and put it in utility namespace
+  e.Think about exceptionhandling ---userfreindly exception page/message
+     -log the exception and write userfriendly return output for user ("Error Occurred.Please contact the customer care.123-2334-2344")
+
+
+Version Names of dll Format
+Backward compatibility: In projects after some changes ,projects are released.These are released in versions.
+Version naming : Major.Minor.Patch 1.0.0:    2.0.0. major -meaning ,new version have backward compatibility issues.
+                                             2.1.0  minor -new version is with more added functionality compatible with previous version.
+                                             2.1.1  patch  -Fixing existing issue,compatible with previous version.
+example for backward compatibility:1. When you make method virtual to non-virtual in your new version,it means projects that override method need to change.So it's a huge change.Never do changes in existing method,class,Interface which will change there behaviour. 2.in version 1.1.1 mark the methods ,class,etc with [obsolete] if they are having major change which we are releasing in next release of our project.In that case it's users will be prepared. 3.When you make previously optional method arguments compulsory then its major change.
+
+ProjectAsset.json: it contains assembly info for all refreneced assemblys with its version details.
+
+
+int or long(for id field): for the properties like id of Product(db table),better to be long.Long are also int with 64bit, int needs 32 bit. Guid can be used too,but sorting on a guid not so efficient,while in case of int/long generally id are autoincremented in databases and are primary key and stored sequentially sorted as it have index over it.
+Decimal(for money related field e.g.Price):Money representind fields,properties should be decimal. price=24.56M-->M represents to save for decimal(more memory),not as double(less memory)
+
+Static,where and why?
+static is something which should have 1 throught application session: e.g. ShoppingCart, All user account related classes : Product is not static as many products can be added/searched in one user session. 
+A static class can be used as a convenient container for sets of methods that just operate on input parameters and do not have to get or set any internal instance fields.
+
+List or Dictionary: Most of the times we need to deal with ordering data,where we have to display it on user screen. But sometimes we need to lookup,associate and then operate on data.
+When ordering comes,we prefer List,when Association comes we use Dictionary, for lookups dictionary is faster. Example: ageHeightdictionary<int,decimal>    List<Ageheightdetails>.
+to get persons height,we can just ageheightdictionary[12],will find in key. While list ageheightdetailslist.find(x=>x.age==12) have to look inside every ageheight object untiil it finds it.
+e.g. one to many relationships and association. Dictionary<,Patient> 
+
+C# | Params
+Params is an important keyword in C#. It is used as a parameter which can take the variable number of arguments.
+Important Point About Params Keyword :
+It is useful when programmer don’t have any prior knowledge about the number of parameters to be used.
+Only one Params keyword is allowed and no additional Params will be allowed in function declaration after a params keyword.
+The length of params will be zero if no arguments will be passed.
+e.g.public static int Add(params int[] ListNumbers) {} -->call it as-->Add(3,5) or Add(5,6,7) or Add(1);
+
+Substring:
+string inputstring=adelpqr; -->a d e l p q r
+                               0 1 2 3 4 5 6
+inputstring.substring(1)-->delpqr
+inputstring.substring(3,2)-->lp-->The substring starts at a specified character position(3 here) and has a specified length(2 here).
+
+Why StringBuilder over string for string operations which are repetative?
+String when modified,internally points to new memoryspace and leave earlier memoryspace that it was pointing to for GC, while stringbuilder use same memoryspace.
+So string needs to do more work here,hence more time of execution,which can performance issue gradually.In case of generating some sentence or report at runtime which is repeatative task,use stringbuilder.
+Problem: string a="abc"; a=a+"pqr"; 
+solution: stringbuilder sb=new stringBuilder("abc"); sb.append("pqr); sb.ToString();
+
+Why asynch,await,task?-->to allow and control parallel execution
+1.Naming convention :Method that is doing asynch task named like methodnameAsynch()
+return type for such methods can be Task<string>,Task<Action> if method returns string,Action respectively.etc.,if return type void,just Task. public void SenEmail();-->public asynch Task SendEmailAsynch(string mailid) 
+2.Await keyword used while calling asynch method.Use it because userscreen is not locked when this job is running.
+(e.g. await Usermanager.CreateAsynch(user,pswrd)).Await keyword tells,to wait for this job to complete.--->await SendEmailAsynch(mailid)..if we don't want to wait until all mails sent,the don't use await keyword while calling method.
+await sendEmailAsynch(emailid);
+model.sentmail=true;//set it if sendEmailAsynch is done with his job
+or
+sendEmailAsynch(emailid)
+CreateCSV();//it will not wait for sendEmailAsynch..it will just do updateScreen.
+3.Task.Run(): Inside our asynch method we can also call non asynch methods of thirdparty dll's by wrapping them using Task.Run() 
+e.g.
+pivate asynch Task generateReport(Movie model)
+{
+var result=Task.Run(()=>CreatCSV(model));
+model.reppLink=result;
+UpdateMovie(model);
+}
+
+3.Callback: 
+While executing asynchmethods without await keyworde.g senEmailsAsynch() instead of await sendEmailAsynch().
+In below example we want to know when ,sendEmailAsynch done doing his job,then the answer is callback function.
+sendEmailAsynch(emailid);
+generateReport();--->This will start executing though senEmailAsynch is not done executing.
+
+How to implement callback: use delegates.pass the delegate in a function.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Conversions for value types
+--------------int to float-----------------
+intValue:7 floatValue:7
+--------------float to int-----------------
+floatValue:5.8 intValue:5
+--------------Sum of Int and float-----------------
+float result for int 3+ float 5.8f= 8.8
+int result for int 3+ (int)float 5.8f= 8
+--------------Math.Round-----------------
+Round(17.2) :17 | Round(17.5) :18 | Round(17.7) :18
+Round(10.2) :10 | Round(10.5) :10 | Round(10.7) :11
+because .5 rounds to nearest even number.
+--------------Double,float,decimal-----------------
+23.6548839573775757575 
+ double:23.654883957377574 | float:23.654884 | decimal:23.6548839573775757575
+double:15 digits after decimal point 
+ float:6 after decimal point 
+ decimal: as much digit you want after decimal point
+
+
+
+

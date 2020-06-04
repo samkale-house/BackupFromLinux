@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "tKnjiBHC5HwCr4S6hlGDzpoBek1IUK9lGUfaIYkNysA8+vOKQCG80NxSg1duD/Vv7OAmmeB0FImfhvejQXPviw==",
+  "success": true,
+  "projectFilePath": "/home/mrmlabs/Sam_Workspace/ReportGenerationPrj/ReportGenerationPrj.csproj",
+  "expectedPackageFiles": [
+    "/home/mrmlabs/.nuget/packages/csvhelper/15.0.5/csvhelper.15.0.5.nupkg.sha512",
+    "/home/mrmlabs/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

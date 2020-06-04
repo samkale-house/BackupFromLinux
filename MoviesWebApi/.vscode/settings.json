@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "MoviesDB",
+            "dialect": "MSSQL",
+            "name": "MovieWebAPIConnection",
+            "password": "SAadmin123",
+            "port": 1433,
+            "server": "localhost",
+            "username": "SA"
+        }
+    ]
+}

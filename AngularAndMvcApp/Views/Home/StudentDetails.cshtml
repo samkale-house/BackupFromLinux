@@ -1,0 +1,26 @@
+@model IEnumerable<AngularAndMvcApp.Models.StudentViewModel>
+@{
+    ViewData["Title"] = "Student Details";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>List of the enrolled students</p>
+<div>
+<table>
+    <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>City</th>
+    </tr>
+@foreach(var item in Model)
+{
+    <tr>
+        <td>@item.Student_Id </td>
+        <td>@item.Student_Name</td>
+        <td>@item.Student_Location</td>
+    </tr>
+}
+
+</table>
+
+</div>

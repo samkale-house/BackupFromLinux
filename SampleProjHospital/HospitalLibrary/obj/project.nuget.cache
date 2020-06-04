@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "rPhtTWPfmwW33SVyc+uOt+MWOe1GmOTZcM4nHOlv1nkksu19Fz3wIo55tdClZB1sjE6Mux5FtsTtSa0JeHktsw==",
+  "success": true,
+  "projectFilePath": "/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/HospitalLibrary.csproj",
+  "expectedPackageFiles": [
+    "/home/mrmlabs/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/mrmlabs/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

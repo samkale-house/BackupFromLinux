@@ -1,0 +1,89 @@
+AddScoped:Creates different instance of resource for each controller ,where resource added will be injected
+AddTranscient: Creates one instance of respouce for each new request
+AddSingleton:Creates one instance for all requests  : kind of static behaviour.
+
+Web API: It can be consumed from webapplication,Mobile Phones,IOT's
+How can i use below action method of webapi for request from only specific domain?
+1.create and add new policy for cors for client of specfic domain in configureservices
+servicess.AddCors(options=>{option.AddPolicy("MyPolicyName",bulder=>
+{builder.withOrigins("https://abc.com");});});
+2.Enablecors in configure for that policy
+app.UseCors("MyPolicyName");
+3.use enablecors attribute with policy name over the action method
+[EnableCors("MyPolicyName")]
+[HttpGet]
+public async Task<ActionResult<IEnumerable<Movie>>> GetMovie()
+{..}
+
+Atrribute routing:
+There are many endpoints for get http action, so for less confusion,actions can be decorated with attribute route.
+[Route("date/{pubdate:datetime}")]
+public IQueryable<BookDto> GetBooks(DateTime pubdate)
+{..}
+uri: /api/books/date/Thu, 01 May 2008   or
+uri: /api/books/date/2008-05-01T00:00:00 
+
+instead of uri :api/books/Thu, 01 May 2008
+with default template: "api/books/{pubdate:date}" 
+
+
+CD/CI
+1.Repository-Bitbucket 2.SCM-Git 3.Jenkins 4.WebHooks(call back jenkins pipeline once stages for 1 branch completed)
+Process:Trigger on push to bitbucket: When changes are commited and pushed using git into bitbucket repository,Build will be triggered
+Multi-branch pipeline:(automatic deployment to multiple branches Feature-->Dev-->Test(if success))
+							       	      |		|
+									      |_____________Prod
+
+Jenkinsfile ,this file can be generated at codebase,Right click->Add new File->JenkinFile
+In Jenkinsfile ,developer can write what stages to perform in CI/CD e.g. stage1 compile,stage2 Build, stage3 commit.
+Jenkins file written in groovy language.
+
+Github Vs BitBucket
+If you boil it down to the most basic and fundamental difference between GitHub and Bitbucket, it is this: GitHub is focused around public code, and Bitbucket is for private. Basically, GitHub has a huge open-source community, and Bitbucket tends to have mostly enterprise and business users.
+Git vs Bitbucket
+Git is the repository.and Bitbucket/GitHub is webbased application to work with versioniong of code resided in Git.
+
+
+
+Identity terms:
+USer: someone present in our database
+Role: what rights user have,based on who the user is,user is added to role, In my application,regietered users get added to Advisor role. [Authorize(Role="Advisor,Admin")]
+Claims: User should have a claim to access some of the resources, (e.g. Employees can access getMaternityLeave only if they have 'Female' claim). Claim base authorization-create policy named female,add in authorization middleware,add as attribute over actionmethod.
+principal/identity: gives who the user is loggedin,what roles he have.  e.g.USer.Identity.Name,User.Identity.IsAdministrator..identity is pricipal
+
+Password stored in database as type ntext (national text).can be navarchar(max).Password once hashed by .net identity,are not hashed back.PasswordHasher class of Identity provides two methods,HashPassword: used at registration or regeneration of password.VerifyHashedPassword:During login it first hash the userinput password and then matches with hashed password from database.
+
+
+
+In database:
+1.add new user
+2.add user to existing role
+3.add new claim
+4.add the user to claim
+
+
+
+compile project with release mode in vscode:
+Below command compiles code and creates release folder in bin.
+dotnet msbuild -property:Configuration=Release
+
+publish command. What it does?What is build? what is .pubxml
+When we publish, .cs files generate prjname.dll,views create prj-views.dll and others create content(static files ,referrerd dll's) all this in one package.
+once we click on publish,it compiles and generates a package,and place it at specified path/location.Path can be dev/test/prod ftp location from where server picks up package.
+Command to publish: dotnet publish -c Release -o /home/mrmlabs/Sam_Workspace/PublishedMoviemgmt
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/visual-studio-publish-profiles?view=aspnetcore-3.1#set-the-environment
+
+What error occurs during build or doing publish?
+1.Compile errors 2.dll dependancy errors-dll reference missing 3.permission issues to add/replace files at specified location.
+
+what issues you have faced during migration 3.5 to 4,and how you resolved it:Application was divided in modules,i was working on one module.
+steps:1.Change compile settings,and 
+2.Solve compile errors and then run.
+3.Run and test application,for any runtime errors.
+4.If we are using any internal or external dll which are running on 3.5 ,and we are migrating our app to 4,we need to refer dll that are supported for 4
+
+
+How to create .net Identity Service,  How to consume Identity service?
+understanding: once user click on login link,request goes to identity service ,where credentials are decoded and login action executed,which returns JWTBarerAuthenticationToken in response.
+JWTAuthenticationtoken stays for that session at browser and browser now can access other authoeized pages in webapp.
+Q:when to expire JWTBarerToken: when clicks on signout,when inactive,session expires.

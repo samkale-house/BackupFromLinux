@@ -1,0 +1,17 @@
+Login to .Net App with Google Authentication.
+
+Register Application for authentication by google API
+1.goto url console.developers.google.com
+2.login with gmail credentials
+3.create project eg. movie management 
+4.Search for Google+api, enable googleapi
+5.configure oauth consent screen,
+6.Create oauth client credentials, by providing name for cliet and appurl before and after login
+
+
+
+client id: 591580233702-hn9ggmejrq75etpcmotihm7v40kjed9o.apps.googleusercontent.com
+client seceret: aNK1b1F33sdx0D2m8gCzM80j
+
+228400734362-rsn59jqf4shu61kkuhmov79k0q8sldnl.apps.googleusercontent.com
+aTpRfhmhkvoTwZFVExgJO34F

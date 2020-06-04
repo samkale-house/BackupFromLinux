@@ -1,0 +1,9 @@
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/AppointmentMgmt/AppointmentMgmtLibrary/obj/Debug/netstandard2.0/AppointmentMgmtLibrary.csprojAssemblyReference.cache
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/AppointmentMgmt/AppointmentMgmtLibrary/obj/Debug/netstandard2.0/AppointmentMgmtLibrary.csproj.CoreCompileInputs.cache
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/AppointmentMgmt/AppointmentMgmtLibrary/obj/Debug/netstandard2.0/AppointmentMgmtLibrary.AssemblyInfoInputs.cache
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/AppointmentMgmt/AppointmentMgmtLibrary/obj/Debug/netstandard2.0/AppointmentMgmtLibrary.AssemblyInfo.cs
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/AppointmentMgmt/AppointmentMgmtLibrary/bin/Debug/netstandard2.0/AppointmentMgmtLibrary.deps.json
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/AppointmentMgmt/AppointmentMgmtLibrary/bin/Debug/netstandard2.0/AppointmentMgmtLibrary.dll
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/AppointmentMgmt/AppointmentMgmtLibrary/bin/Debug/netstandard2.0/AppointmentMgmtLibrary.pdb
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/AppointmentMgmt/AppointmentMgmtLibrary/obj/Debug/netstandard2.0/AppointmentMgmtLibrary.dll
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/AppointmentMgmt/AppointmentMgmtLibrary/obj/Debug/netstandard2.0/AppointmentMgmtLibrary.pdb

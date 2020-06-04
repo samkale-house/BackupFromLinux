@@ -1,0 +1,38 @@
+billapp
+
+1. Logical Steps for functionality
+2. Put assumptions
+3. Classes / Entities / Tables
+4. Identify Test cases 
+5. Proceed to coding
+
+1. Customer will call billing number
+2. Billing Agent will verify Customer
+    a) if customer found
+        1) findBillingAmount
+            a) if billingamount is zero, no action, just inform
+            b) proceed to pay
+3. The pay :
+    a) getCreditCardDetails
+    b) pay {success/failure}
+        1) If success, then 
+            a) email confirmation to customer
+            b) update backend for billing summary, billing history
+        2) declined, repeat 3 a)
+=============================
+BillingMainApp
+CustomerService
+BiilingService
+PaymentService
+BillingAppTest
+
+==================
+BillingMainApp
+    CustomerLookupScreen [fname, lnama,int? custAccountNum, string? custAddress]
+    CustomerController
+        [POST : api/customer/fname]
+        1. [get]Serach 
+        2.[post] search
+            a.CustomerService.getcustbyfname().where(lname.equals)        
+               
+    CustomerLookupResultScreen:

@@ -1,0 +1,17 @@
+@model VerifyOTPvm;
+
+    
+    <div class="text-danger">@ViewBag.otpsuccessmsg</div>
+    <form method="POST">
+    <div class=form-group>
+    Enter OTP
+    </div>
+   <div class="form-group">
+                <label asp-for="inputotp"></label>
+                <input asp-for="inputotp" class="form-control" />
+                <span asp-validation-for="inputotp" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+        <button type="submit" class="btn btn-primary">Verify OTP</button>
+    </div>
+    </form>

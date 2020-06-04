@@ -1,0 +1,86 @@
+
+
+ITM cash management project:
+Task1(Projection Report): In this project advisors have client account asset details and all american funds names and code.The value of fund was taken from tstar data.(Fetch option given to advisor,that data will not be stored in itm database,instead it will be projected on the screen,and added to csvreport.)The task of advisor was to pretend buy/sell funds using client assets and see the projected calculations (calcuated by itm projetct) in the screen.once buy/sell was selected,and fund allocated-the value in projection table will get updated for all funds for next 7 days.These calculation projections data was exported to csv and emailed to operation team which discuss with client ,approves and do actual buy/sell.
+Task2(Maintenance): Advisor Can add new fund to already existing funds in itm database.Delete funds unused was a admin job,done from sql backend.
+Task3(Create chart for public purpose): Publish general nav
+Task4(AccountAdministartion)
+  
+Tables:
+ITM database: 1.AdvisorsUSer:status,city,useremail,passwordother columns form IDentityUser(name,emailid,passwordhash,normalizedemail,normalizedname)
+              2.Other identity tables: apsnetroles,aspnetuserroles
+              3.Asset: Assettype, assetid,asset_allocation
+              4.AdvisorOrganization: advisoremployeeid,phonenumber
+              5.ClientAssetDetail:client_id,assetId, clientDetails:clientid,advisorid, ClientFundDetails:clientid,fund_id
+              6.Funds:fundid,fundcode,fundname,fundorganization,fundvalue 
+              7.operatorteam:id,mailid--->just to send projection report.  
+Data from organization provided in execel:ClientDetail:client_id,assetId,allocation,advisorid  AdvisorDetail:advisor_employeeid,Advisor_phonenumber -: backend job (db team use ssis)to add data from this csv to AdvisorOrganization table.
+
+(Process: 1.fetch tsar data from noura sql server-on the page2.Subscription-buy or redumption-sell add values and see projection of values(calculated in code)on screen 3.email operation team about results from calculations.)
+ 
+
+MyRole: As per business rule the advisor should know his employeeid and phonenumber registered in organization, and then allowed to register for advisor application.So I suggested to use verification by OTP,which added more security.This application was made for tokyo advisors ,it was internal app.Used third party Messaging api,which have message object,client object,id and auth and orgphonenumber were provided by organization(after registering with twillio).
+Added Register/Login functionality ,accountManagement-changepassword,resetpassword,lockoutfunctionality.
+
+
+
+
+
+
+
+what does capital group do? Investment organization
+
+What advisers can do with client accounts? Advisors have data about client assets(multiple types of asset e.g. cash,equity,contract),market funds(type of funds),advisors will create a sheet that describes projection of asset allocation towards fund and expected returns for next 7 days.
+ 
+
+how advisers get linked with client accounts?
+
+how new adviser can sign in to advisers website?
+
+what job adviser website is doing?
+1.Functionality sms otp on which functionality
+2.recaptcha on which page
+3.Business rule - at least 2 (tstardata fetch- sub/red file upload contains unit for sub red-fund family(calculations per day different)>get proj upto 7 days--nav publish on cg website
+4.Which forms advisers filled-validation functionality and crud operation EF.
+5.What common functionality you created REST service-to send email,message on phone. What approach used to call service in your application?-----transaction relate -email to operation team n portfolio mngmt
+
+
+From CG Site?
+There are different types of fund:
+1.Equity -16funds
+2.Balanced -4funds
+3.FixedIncome Taxable-12 funds
+4.Fixed Income tax exempt -6 funds
+5.Money Market -1 fund
+https://www.capitalgroup.com/advisor/login/reset-password.htm?t2l=1588453601508
+Advisors Role: create portfolio to meet clients goal
+Prtfolio analyzer:Create excelsheet to describe client asset allocation and market capitalization
+Advisors meet clients and then invest onbelhlf of client from client account.
+
+
+projections: for next 3 days...itm cash projections.fund management fda,different types of funds ...
+
+cashprojection screen: he had daily sub/buy red/sell
+which fund ..which asset.. if we buy/sell today...it will be in
+projection calculation...
+reporting...nav publish on 
+
+maintenance activity..new fund launch..asset,relation..
+nomura product: sql server  hit...(read only)(Process: 1.fetch tsar data from noura sql server-on the page2.Subscription-buy or redumption-sell add values and see projection of values(calculated in code)on screen 3.email operation team about results from calculations.)
+
+
+
+
+Under Account tab functionality as below
+1.Transaction:Add or remove money from my account,send gift/donation from my account
+2.Account Maintenance:update my beneficiary,update my account settings and options
+3.Transfer,RollOvers and conversions:Transfer or rollover into my AFS account
+   Transfer money from my AFS account to non-AFS account,Change or update account ownership
+4.Change oor correct my IRA:convert my IRA to Roth IRA,update my Traditional IRA or Roth IRA contribution,Remove an overcontribution from my IRA
+
+Introduce yourself:
+How you meet your goals in previous projects...Yearly at the start of tear,fill goals in appraisal .Throught year try to meet goals.At end fill appraisal to to tracks what goals completed actually.Improve next year if not meet this year.
+how you was on page each day.. ..1.Take the latest code at start of the day.2.Work on your module-Feature branch.Test locally and checkin at the end of day.
+how you seemed to be quick learner..
+how you assueared that work is done on time :...  1.Analyze deeply to estimate task,know about impacts on other modules after fixing issue.
+                                                  2.Fix issue,test application locally with the taking latest code on your machine.

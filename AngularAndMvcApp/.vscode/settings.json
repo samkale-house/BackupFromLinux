@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 60,
+            "database": "school_db",
+            "dialect": "MySQL",
+            "name": "sam-mysql-conn",
+            "password": "Admin123!",
+            "port": 3306,
+            "server": "localhost",
+            "username": "mahallem"
+        }
+    ]
+}

@@ -1,0 +1,142 @@
+
+what is Identity data: Identification:password,useri +  personal info:gender/city  +  What you are? patient/doctor
+Identity data can be used for multiple applications.
+Roles: Identity role or permission role. Roles can be treated as groups.
+What are these terms: Authentication is handled by authentication middleware such as cookie or opeind connect. 
+Asp.net core identity verify credentials,it is user store. Identity server offers protocol support for opeind connect.
+
+ASP .Net Identity Structure:
+ 1. Stores (IUserStore.IRoleStore) : Storage.This is data access layer.It will allow you to change database provider(sql to mysql,to nosql,sql to oracle) any time,
+ which does not require any change throught application code,as mapping part will be taken care by stores.
+ 2. Managers (UserManager,RoleManager) : This is where business logic leaves e.g.Verifying user by password,hashing password,managing roles.Usermanager doesn't know anything about user property,it knows user object.
+ 3. Extensions (SignInManager,SecurityStampValidator)  :It further absracts Manager layer.e.g. SignInManager issues cookies based on which user manager validates user.
+ 4.Entities: User, Role . These are the classes we use mostly.It's instance is the realtime user.
+ applicationuser->SignInManager->UserManager->Stores->Database Server(Identity data resides here)
+
+ It comes in 4 different dlls
+ Microsoft.Extension.Identity.Core(password hashing ,token generation) & Microsoft.Extensions.Identity.Stores (userstore,rolestore adds data to identity data store) 
+ Microsoft.AspNetCore.Identity(UserManager,RoleManager) & Microsoft.AspNetCore.Identity.EntityFrameworkCore(for identity dbcontext)
+ 
+ .Net Identity comes with default options set for ,password strength or emailid constraints. This default settings can be changed by 
+ IdentityOptions.**Check for UserManager class and RoleManager in microsoft
+  
+  IUserStore: 
+  Every store have create update delete functions.Evrytime record in a store accessed by normalized form for consistency.
+  e.g.If searching by username,dbstore will look for normalized username SANKALE 
+  Userstore also does work for entity rather than on property. 
+  e.g.It can find users id if Userobject is passed(FindByIdAsync(user,token))
+  There are other 13 stores(IUserPasswordStore,IUserEmailStore,IUserLockoutStore,IUserRoleStore,IQueryableUserStore(allows usermanager to have right access to data store.)etc.)
+
+  1.Register user
+  2.create custom store 
+  3.use dll and register user
+We need: Microsoft.AspNetCore,Microsoft.AspNetCore.Mvc,Microsoft.AspNetCore.StaticFiles ,entity framework, visual studio, install .netcore identity packages manually.
+go to proj startup>1.register the useridentity: services.AddIdentityCore<string>(option=>....)  
+
+We are creating custom store for custom user class
+Create AppUser: not inherited from IdentityUser 
+public class AppUserStore:IUserStore<AppUser>,IUserPasswordStore<AppUser>
+{
+    //Implement IUserStore
+//while implementing use entityframework for crud.
+// e.g. public Task<string> GetUserIdAsync(AppUser user,CancellationToken cancellationtoken){return Task.FromResult(user.id);}  
+//make all async as userproperties of user might be in different databases in the store.
+//get and set password.. GetPasswordHashAsync(AppUser user,CancellationTokn cancallationtoken){retrun Task.FromResult(user.PasswordHash);}
+}
+
+Update startup to use our custom store:
+Services.AddIdentityStore<AppUser>(options=>{});
+Services.AddScoped<AppUser,AppUserStore>();
+
+1.Do create register get,post actions. get username password input,checkif userid already exist in var user=db(usermanager.FindByNameAsync(username))-->this is called from our custom userstore.create new AppUser obj with user.id=guild.NewGuid().ToString();,map other properties from model(AppUser).
+2.Do create login get post actions.,For authentication ,authentication middleware need to be added.Default for .netcore is cookie. Add Microsoft.AspNetCore.Authentication.Cookie.. update startup, 
+Now tell middleware two things, authentication scheme which is unique identifier i.e.cookie here and login path.This way when authentication challenge is issued by one of your action the cookie middleware will know what action the user to send to authenticate.
+Services .AddAuthentication("Cookies").AddCookie("cookies",options=>options.LoginPath="/Home/Login");//in configureservices
+app.UseAuthentication;//in configutre, make sure it is before mvc. and routing
+
+For Login Action: we need to verify user credentials against password which is stored in hashed value in dbstore.So checkpasswordasync method checks plain password ahainst hashed password.
+var user=userMAnager.FindByNameAsynch(model.userNAme);
+if(user!=null && await usermanager.checkPasswordAsynch(user,user.password)){
+//bfore using signin on httpcontext,lets create claimspricipal that represents the user.
+//Below We are saying cookies is authority that issues this identity.Let's create claimidentity and add couple claims(like unique identifier under username.) 
+var identity=new ClaimsIdentity("cookies");
+identity.AddClaim(new Claim(CalimTypes.NAmeIdentifier));
+await HttpContext.SignInAsync("cookies",identity);//firstparam is authentication sceheme
+   }
+or
+
+
+
+
+3.Put [Authorize] attribute on about page.
+
+Extending IdentityUse or extend identityschemma:
+when and when not to use extended schema for identity.If you want to add more complex objects which have properties on which there might be index in database.
+Example: we want user to be of particular organization.So our Identityuser class must have object to represent organization
+public AppUser:IdentityUser
+{public Locale{get;set;}  ="en-Us";//may be we need to search user by locale i.e. it can be claim,so we will need ourdbcontext to create index on it.
+public OrgId{get;set;}
+}
+public class Organization{public string Id{get;set;}  public string Name{get;set;}
+
+public appdbcontext:IdentityDbContext<AppUser>
+{
+public appdbcontext(DbcontextOptions<AppUser> otions):base(options){}//take care for connectionstring,connection
+override OnModelCreating(ModelBuilder builder)//everything that's done for identitydbcontext,do that for appdbcontext.
+{
+base.OnModelCreating(builder);
+builder.Entity<AppUser>(user=>user.HasIndex(x=>x.locale).IsUnique(false));//create index on locale property.
+//set how organization object should be treated.Each user should have organization.save organization in organization table,set id as primary key.One organization have many user relation.orgid is foreignkey in appuser.
+builder.Entity<Organization>(org=>
+{org.ToTable("Organizations");
+Org.HasKey(x=>x.Id);
+org.HasMany<AppUser>().WithOne().HasForeignKey(x=>x.orgId).IsRequired(false);
+});
+}
+}
+
+Now We can change startup as below,ask to use defaultauthentication by identity classes.so let's remove authentication middleware.,if we do so, in login method
+once the user is verified by psqrd,we can create pricipalidentity to remain in httpcontext.
+var user=await userMAnager.FindByNameAsync(model.username);   //inject IUserClaimsPrincipalFactory<AppUser> userClaimsPrincipalfactory
+if(user!=null and await usermanager.CheckPasswordAsync(user,model.paswrd))
+{
+var principalidentity=userClaimsPrincipalfactory.CreatAsync(user);
+await HttpContext.SignInAsync("Identity.Application",pricipalidentity);
+}
+
+Then add code in strtup.-> Services.AdDbContext<AppUserDbContext>(opt=>opt.UseSqlServer("connstrt",sql=>sql.MigrationAssembly(migrationAssembly)));var migrationAssembly=typeof(Stratup).GetTypeInfo.Assembly.GetName().Name;
+This is to avoid error while initial migration.
+
+Run migration commands.Db will be created with organization table in it.
+
+
+Password Reset: In this case user clicks on forgot password at login and lands onPage to enter useremail.Send Email.In email link with passwordtoken will be provided.
+1.UserManager.GetTokenAsync(user,passwordresettokenProvider,resetpasswordtokenPurpose);send link in mail(appdomain/resetpassword?token=""&userid=)
+DataProtectorTokenProviders are concatination of strings(UTC DateTime+userid+purpose+security stamp) ,which is protected by aspnetcore data protection api.
+2.verify token---->usermanager.verifyTokenAsync(user,Options.Tokens.PasswordResetTokenProvider,ResetPasswordTokenPurpose,token) 
+verify timespan---->(creationTime+Options.TokenLifeSpan) < DateTime.UtcNow()
+reset the password-->Usermanager.ResetPasswordAsync(user,token,newpassword);//onclick of reset button,on page that user gets after clicking on link in mail.
+
+Change Password:
+userManager.ChangePasswordAsync(user,old/current password,new password)
+
+Avoid the BruteForce Attack:(deal with account lockouts)
+1.Add identityoption in startup-->options.Lockout.AllowedForNewUsers=true;
+options.Lockout.MaxFailedAccessAttempts=3;
+options.Lockout.DefaultLockoutTimeSpan=TimeSpan.FromMinutes(10);
+2.In login,before credentialcheck,check for lockedout,if not then checkforpasswrd andsignin,if passwordwrong,add count to accessfailed.
+if(user!=null && !await usermanager.CheckLockedOutAsync(user))
+{  
+ if(usermanager.checkPasswordAsync(user)){...signin... await usermanager.ResetAccessFailedCountAsync()....return View(home);}
+await usermanager.AccessFailedAsync(user); 
+if(usermanager.CheckLockedOutAsync(user)){//send email to user that ur account is locked out}
+else userManager.AccessFailedAsync(user);//increment accessfailedcount by 1.     
+}
+3.if user resets password succefully in resetpassword,
+//set the lockoutend date to end the lockout.
+await usermanager.setLockoutEndDateAsync(user,DateTime.Now());
+
+
+
+
+MultifactorAuthentication,2FA 

@@ -1,0 +1,16 @@
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/bin/Debug/netcoreapp3.1/HospitalUI
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/bin/Debug/netcoreapp3.1/HospitalUI.deps.json
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/bin/Debug/netcoreapp3.1/HospitalUI.runtimeconfig.json
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/bin/Debug/netcoreapp3.1/HospitalUI.runtimeconfig.dev.json
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/bin/Debug/netcoreapp3.1/HospitalUI.dll
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/bin/Debug/netcoreapp3.1/HospitalUI.pdb
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/bin/Debug/netcoreapp3.1/HospitalLibrary.dll
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/bin/Debug/netcoreapp3.1/HospitalLibrary.pdb
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/obj/Debug/netcoreapp3.1/HospitalUI.csprojAssemblyReference.cache
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/obj/Debug/netcoreapp3.1/HospitalUI.csproj.CoreCompileInputs.cache
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/obj/Debug/netcoreapp3.1/HospitalUI.AssemblyInfoInputs.cache
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/obj/Debug/netcoreapp3.1/HospitalUI.AssemblyInfo.cs
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/obj/Debug/netcoreapp3.1/HospitalUI.csproj.CopyComplete
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/obj/Debug/netcoreapp3.1/HospitalUI.dll
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/obj/Debug/netcoreapp3.1/HospitalUI.pdb
+/home/mrmlabs/Sam_Workspace/UIInterviewPrep/HospitalSln/HospitalUI/obj/Debug/netcoreapp3.1/HospitalUI.genruntimeconfig.cache

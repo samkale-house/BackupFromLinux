@@ -1,0 +1,26 @@
+{
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 120,
+            "database": "MoviesDB",
+            "dialect": "MSSQL",
+            "isActive": true,
+            "isConnected": true,
+            "name": "MovieDBConnection",
+            "password": "SAadmin123",
+            "port": 1433,
+            "server": "localhost",
+            "username": "SA"
+        },
+        {
+            "connectionTimeout": 120,
+            "database": "Production",
+            "dialect": "MSSQL",
+            "name": "ProdConnection",
+            "password": "SAadmin123",
+            "port": 1433,
+            "server": "localhost",
+            "username": "SA"
+        }
+    ]
+}

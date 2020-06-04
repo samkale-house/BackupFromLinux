@@ -1,0 +1,15 @@
+@model IEnumerable<Blog.Models.Post>
+    
+    <table>
+        <tr>
+            <th>
+                <td>Blog Posts</td>
+            </th>
+        </tr>
+        @foreach(var item in Model){
+        <tr>
+            <td>@Html.Raw(item.data)</td>
+        </tr>
+        }
+        
+    </table>

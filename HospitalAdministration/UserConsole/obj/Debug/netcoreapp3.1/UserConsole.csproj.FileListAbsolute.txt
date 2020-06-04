@@ -1,0 +1,16 @@
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/bin/Debug/netcoreapp3.1/UserConsole
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/bin/Debug/netcoreapp3.1/UserConsole.deps.json
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/bin/Debug/netcoreapp3.1/UserConsole.runtimeconfig.json
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/bin/Debug/netcoreapp3.1/UserConsole.runtimeconfig.dev.json
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/bin/Debug/netcoreapp3.1/UserConsole.dll
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/bin/Debug/netcoreapp3.1/UserConsole.pdb
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/obj/Debug/netcoreapp3.1/UserConsole.csprojAssemblyReference.cache
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/obj/Debug/netcoreapp3.1/UserConsole.csproj.CoreCompileInputs.cache
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/obj/Debug/netcoreapp3.1/UserConsole.AssemblyInfoInputs.cache
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/obj/Debug/netcoreapp3.1/UserConsole.AssemblyInfo.cs
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/obj/Debug/netcoreapp3.1/UserConsole.dll
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/obj/Debug/netcoreapp3.1/UserConsole.pdb
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/obj/Debug/netcoreapp3.1/UserConsole.genruntimeconfig.cache
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/bin/Debug/netcoreapp3.1/HospitalServices.dll
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/bin/Debug/netcoreapp3.1/HospitalServices.pdb
+/home/mrmlabs/Sam_Workspace/HospitalAdministration/UserConsole/obj/Debug/netcoreapp3.1/UserConsole.csproj.CopyComplete

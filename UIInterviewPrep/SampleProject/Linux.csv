@@ -1,0 +1,8 @@
+S No, Commands, Meaning
+1,pwd,Present Working Directory
+2,cd .., move one level up in folder
+3,ls -ltr, List all files/folder with user and lastmodified details
+4,cat filename.txt, View content of filename.txt
+5,cp scenery.jpg /home/username/Pictures,create a copy of scenery.jpg (from your current directory) into the Pictures directory
+6,rm -r, to delete directories and the contents within current directory
+7, rmdir, removes empty directory

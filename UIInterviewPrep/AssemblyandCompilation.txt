@@ -1,0 +1,21 @@
+1.Create assembly with exe extension ---single file e.g.ProductsModel.cs
+<compiler command> <module name>
+In this command, compiler command is the compiler command for the language used in your code module, and module name is the name of the code module to compile into the assembly.
+Example: csc ProductModel.cs  ---->generates ProductModel.exe after compilation of ProductModel.cs
+Example: csc -out:Myassembly.exe ProductModel.cs  ----1generates Myassembly.exe
+2.Specifying the module parameter with the /t: compiler option indicates that the file should be compiled as a module rather than as an assembly. The compiler produces a module called Stringer.netmodule, which can be added to an assembly.
+csc /t:module Stringer.cs  --->stringer.netmodule will be generated
+
+To generate dll, for the cs file that have entry point i.e.main method ,and uses methods from other modul i.e. Stringer.cs class
+csc /addmodule:Stringer.netmodule /t:module Client.cs  --->Client.cs
+
+This is the .Net web projects are binded together.Different .netmodules makes one dll.It's useful to make one project from different modules or each developer
+
+You can use the MSIL Disassembler (Ildasm.exe) to examine the contents of an assembly, or determine whether a file is an assembly or a module.
+3.Use the Assembly Linker (Al.exe) to create the output file that contains the assembly manifest. This file contains reference information for all modules or resources that are part of the assembly.
+At the command prompt, type the following command:
+al <module name> <module name> … /main:<method name> /out:<file name> /target:<assembly file type>
+Example:al Client.netmodule Stringer.netmodule /main:MainClientApp.Main /out:myAssembly.exe /target:exe
+Al.exe creates an assembly that is a console application executable called myAssembly.exe. The application consists of two modules called Client.netmodule and Stringer.netmodule, and the executable file called myAssembly.exe, which contains only assembly metadata. The entry point of the assembly is the Main method in the class MainClientApp, which is located in Client.dll.
+4.Examine assembly contents with IL disassembler .The IL Disassembler is a companion tool to the IL Assembler .It is inastalled with visual studio.
+ildasm MyFile.exe /text  --->disassembles MyFile.exe and displays on cosole output as text in visual studio.

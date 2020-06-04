@@ -1,0 +1,9 @@
+/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/bin/Debug/netstandard2.0/HospitalLibrary.deps.json
+/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/bin/Debug/netstandard2.0/HospitalLibrary.dll
+/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/bin/Debug/netstandard2.0/HospitalLibrary.pdb
+/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/obj/Debug/netstandard2.0/HospitalLibrary.csprojAssemblyReference.cache
+/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/obj/Debug/netstandard2.0/HospitalLibrary.csproj.CoreCompileInputs.cache
+/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/obj/Debug/netstandard2.0/HospitalLibrary.AssemblyInfoInputs.cache
+/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/obj/Debug/netstandard2.0/HospitalLibrary.AssemblyInfo.cs
+/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/obj/Debug/netstandard2.0/HospitalLibrary.dll
+/home/mrmlabs/Sam_Workspace/SampleProjHospital/HospitalLibrary/obj/Debug/netstandard2.0/HospitalLibrary.pdb

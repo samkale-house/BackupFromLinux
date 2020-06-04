@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "FileIOReportDB",
+            "dialect": "MSSQL",
+            "isActive": true,
+            "isConnected": true,
+            "name": "ReportAccessConnection",
+            "password": "SAadmin123",
+            "port": 1433,
+            "server": "localhost",
+            "username": "SA"
+        }
+    ]
+}
